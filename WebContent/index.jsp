@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%-- Ajaxテスト用のjsp画面 --%>
+<%-- Ajaxテスト用のフォーム画面 --%>
+<%-- ワード(文字列)をDBに登録するフォーム画面 --%>
 <%-- テキストボックスに文字列を入力し、チェックというボタンをクリックすると非同期通信で絞り込み検索をしてくれる --%>
-<%-- 該当する文字列があればダイアログボックスに文字列群を表示、なければ該当なしと表示される --%>
+<%-- 該当する文字列(既にDBに登録されているワード)があればダイアログボックスに文字列群を表示、なければ該当なしと表示される --%>
 <!DOCTYPE html>
 <html>
 
@@ -39,8 +40,11 @@
 			});
 		</script>
 
-		<form action="">
-			<input type="text" name="word" id="word"> <button type="button" id="ajax-btn">チェック</button>
+		<h2>ワード登録フォーム</h2>
+
+		<form action="${pageContext.request.contextPath}/InsertServlet" method="post">
+			<input type="text" name="word" id="word" required>
+			<button type="button" id="ajax-btn">チェック</button>
 			<button type="submit" id="touroku-btn">登録</button>
 		</form>
 	</body>
